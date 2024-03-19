@@ -21,7 +21,6 @@ return {
       { "saadparwaiz1/cmp_luasnip", dependencies = { "LuaSnip" } },
     },
     event = "InsertEnter",
-    -- TODO: Simplify this (not part of base configuration).
     opts = function(_, opts)
       local cmp = require("cmp")
       local lspkind = require("lspkind")
@@ -106,7 +105,6 @@ return {
     end,
   },
 
-  -- TODO: Remove this (not part of base configuration).
   {
     "hrsh7th/nvim-cmp",
     event = "CmdlineEnter",

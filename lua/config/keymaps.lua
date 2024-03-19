@@ -1,6 +1,6 @@
 local map = function(mode, lhs, rhs, opts)
-	local base = { noremap = true, silent = true }
-	vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", base, opts or {}))
+  local base = { noremap = true, silent = true }
+  vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", base, opts or {}))
 end
 
 -- General
@@ -53,31 +53,3 @@ map("n", "<C-l>", "<Cmd>BufferLineMoveNext<CR>", { desc = "Move buffer right" })
 -- Open horizontal/vertical splits
 map("n", [[\]], "<Cmd>wincmd s<CR>", { desc = "New horizontal split" })
 map("n", [[|]], "<Cmd>wincmd v<CR>", { desc = "New vertical split" })
-
--- Switch windows
-map({ "n", "i", "t" }, "<M-h>", function()
-	require("smart-splits").move_cursor_left()
-end, { desc = "Go to left window" })
-map({ "n", "i", "t" }, "<M-j>", function()
-	require("smart-splits").move_cursor_down()
-end, { desc = "Go to lower window" })
-map({ "n", "i", "t" }, "<M-k>", function()
-	require("smart-splits").move_cursor_up()
-end, { desc = "Go to upper window" })
-map({ "n", "i", "t" }, "<M-l>", function()
-	require("smart-splits").move_cursor_right()
-end, { desc = "Go to right window" })
-
--- Resize windows
-map({ "n", "i", "t" }, "<M-H>", function()
-	require("smart-splits").resize_left()
-end, { desc = "Resize window left" })
-map({ "n", "i", "t" }, "<M-J>", function()
-	require("smart-splits").resize_down()
-end, { desc = "Resize window upwards" })
-map({ "n", "i", "t" }, "<M-K>", function()
-	require("smart-splits").resize_up()
-end, { desc = "Resize window downwards" })
-map({ "n", "i", "t" }, "<M-L>", function()
-	require("smart-splits").resize_right()
-end, { desc = "Resize window right" })
