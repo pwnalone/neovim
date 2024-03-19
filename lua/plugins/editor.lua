@@ -67,7 +67,6 @@ return {
   -- Smart switching/resizing of splits with builtin Tmux integration.
   {
     "mrjones2014/smart-splits.nvim",
-    version = "*",
     event = "VeryLazy",
     opts = { default_amount = 1, cursor_follows_swapped_bufs = true },
   },
