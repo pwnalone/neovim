@@ -11,9 +11,6 @@ return {
     opts = {
       close_if_last_window = true,
       popup_border_style = "rounded",
-      filesystem = {
-        hijack_netrw_behavior = "open_current",
-      },
       commands = {
         navigate_up_or_close_dir = require("util.neo-tree").navigate_up_or_close_dir,
         navigate_dn_or_open_file = require("util.neo-tree").navigate_dn_or_open_file,
@@ -23,16 +20,23 @@ return {
         mappings = {
           ["<space>"] = "none",
           ["<tab>"] = "open_without_focus",
-          ["L"] = "focus_preview",
-          ["Z"] = "expand_all_nodes",
-          ["h"] = "navigate_up_or_close_dir",
-          ["l"] = "navigate_dn_or_open_file",
         },
         fuzzy_finder_mappings = {
           ["<C-j>"] = "move_cursor_down",
           ["<C-k>"] = "move_cursor_up",
           ["<C-n>"] = "none",
           ["<C-p>"] = "none",
+        },
+      },
+      filesystem = {
+        hijack_netrw_behavior = "open_current",
+        window = {
+          mappings = {
+            ["L"] = "focus_preview",
+            ["Z"] = "expand_all_nodes",
+            ["h"] = "navigate_up_or_close_dir",
+            ["l"] = "navigate_dn_or_open_file",
+          },
         },
       },
       source_selector = {
