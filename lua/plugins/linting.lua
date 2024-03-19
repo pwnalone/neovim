@@ -4,6 +4,7 @@ end
 
 return {
   "mfussenegger/nvim-lint",
+  version = false,
   event = "User FileOpened",
   keys = { { "<Leader>ll", lint, desc = "Lint current buffer" } },
   config = function()

@@ -1,11 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    version = "*",
     build = ":TSUpdate",
     event = "User FileOpened",
     cmd = {
-      "Inspect",
       "InspectTree",
       "TSBufDisable",
       "TSBufEnable",

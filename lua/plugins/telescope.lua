@@ -1,4 +1,4 @@
-local M = {
+local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -80,10 +80,31 @@ local M = {
         },
         mappings = {
           i = vim.tbl_extend("force", keymaps, {}),
-          n = vim.tbl_extend("force", keymaps, {
-            ["q"] = actions.close,
-          }),
+          n = vim.tbl_extend("force", keymaps, { ["q"] = actions.close }),
         },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--trim",
+          "--hidden",
+          "--glob=!.git/",
+        },
+      }
+
+      opts.pickers = {
+        find_files = {
+          find_command = { "rg", "--files", "--hidden", "--glob=!.git/" },
+        },
+        colorscheme = { enable_preview = true },
+        grep_string = { only_sort_text = true },
+        live_grep = { only_sort_text = true },
+        man_pages = { sections = { "ALL" } },
+        planets = { show_pluto = true },
       }
 
       return opts
@@ -99,7 +120,7 @@ local M = {
 }
 
 if vim.fn.executable("make") then
-  M[#M + 1] = {
+  plugins[#plugins + 1] = {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       {
@@ -120,4 +141,4 @@ if vim.fn.executable("make") then
   }
 end
 
-return M
+return plugins

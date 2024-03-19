@@ -1,6 +1,7 @@
 return {
   {
     "nvimdev/dashboard-nvim",
+    version = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VimEnter",
     opts = function()
