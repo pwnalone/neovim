@@ -105,4 +105,38 @@ return {
       })
     end,
   },
+
+  -- Interactive text alignment (see `:help mini.align`).
+  {
+    "echasnovski/mini.align",
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  -- Split/join blocks of code.
+  {
+    "Wansmer/treesj",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = { "TSJJoin", "TSJSplit", "TSJToggle" },
+    keys = {
+      {
+        "<Leader>j",
+        function()
+          require("treesj").toggle({ both = { recursive = false } })
+        end,
+        desc = "Toggle split/join",
+      },
+      {
+        "<Leader>J",
+        function()
+          require("treesj").toggle({ split = { recursive = true } })
+        end,
+        desc = "Toggle split/join (recursively)",
+      },
+    },
+    opts = {
+      use_default_keymaps = false,
+      max_join_length = 999,
+    },
+  },
 }
