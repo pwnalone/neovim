@@ -1,11 +1,14 @@
+-- NOTE: Both Tokyonight and Catppuccin are already installed.
+
 return {
+  -- Install Kanagawa.
   {
     "rebelot/kanagawa.nvim",
     version = false,
-    priority = 1000,
-    config = function(_, opts)
-      require("kanagawa").setup(opts)
-      vim.cmd.colorscheme("kanagawa")
-    end,
+    lazy = true,
+    opts = { theme = { "wave" } },
   },
+
+  -- Pick colorscheme.
+  { "LazyVim/LazyVim", opts = { colorscheme = "tokyonight" } },
 }
