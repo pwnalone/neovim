@@ -141,7 +141,6 @@ return {
   -- Toggle terminals.
   {
     "akinsho/toggleterm.nvim",
-    version = "*",
     cmd = "ToggleTerm",
     opts = {
       shading_factor = -10,
