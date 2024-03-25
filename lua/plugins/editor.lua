@@ -1,4 +1,16 @@
 return {
+  -- Customize the code outline window.
+  {
+    "stevearc/aerial.nvim",
+    opts = {
+      layout = {
+        min_width = 20,
+        placement = "edge",
+        resize_to_content = true,
+      },
+    },
+  },
+
   -- Disable search mode to avoid prematurely exiting search in some circumstances.
   {
     "folke/flash.nvim",
