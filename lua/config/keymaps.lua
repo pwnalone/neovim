@@ -33,7 +33,7 @@ map("v", "g+", "g<C-a>", { desc = "Progressively increment selections" })
 map("v", "g-", "g<C-a>", { desc = "Progressively decrement selections" })
 
 -- Yank (copy) to system clipboard
-map({ "n", "v" }, "Y", [["+y]], { desc = "Yank to clipboard" })
+map({ "n", "v" }, "Y", [["+y]], { desc = "Yank to clipboard", noremap = false })
 
 -- Move text up/down with proper indentation
 map("n", "<C-j>", "<Cmd>m .+1<CR>==", { desc = "Move down" })

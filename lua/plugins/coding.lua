@@ -139,4 +139,42 @@ return {
       max_join_length = 999,
     },
   },
+
+  -- Customize Yanky options and modify default keymaps.
+  {
+    "gbprod/yanky.nvim",
+    opts = function(_, opts)
+      local mapping = require("yanky.telescope.mapping")
+
+      opts.picker = {
+        telescope = {
+          use_default_mappings = false,
+          mappings = {
+            default = mapping.put("p"),
+          },
+        },
+      }
+
+      return opts
+    end,
+    keys = function(_, keys)
+      local keymaps = {}
+      for _, map in ipairs(keys) do
+        keymaps[map[1]] = map
+      end
+
+      keymaps["<C-n>"] = keymaps["[y"]
+      keymaps["<C-p>"] = keymaps["]y"]
+      keymaps["[y"] = nil
+      keymaps["]y"] = nil
+
+      keys = {}
+      for k, v in pairs(keymaps) do
+        table.insert(keys, v)
+        v[1] = k
+      end
+
+      return keys
+    end,
+  },
 }
