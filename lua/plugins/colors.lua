@@ -1,13 +1,5 @@
 -- NOTE: Both Tokyonight and Catppuccin are already installed.
 
---
--- NOTE: This may eventually become unnecessary...
---
--- Track issue: https://github.com/rebelot/kanagawa.nvim/issues/220
--- Track issue: https://github.com/marko-cerovac/material.nvim/issues/196
---
-local util = require("util.colors")
-
 return {
   -- Gruvbox Material
   {
@@ -61,65 +53,49 @@ return {
     "marko-cerovac/material.nvim",
     version = false,
     lazy = true,
-    opts = function()
-      vim.g.material_style = "darker"
-
-      local colors = require("material.colors")
-
-      local make_highlight = function(color)
-        return { bg = util.darken(color, 0.1, colors.editor.bg), fg = color }
-      end
-
-      return {
-        disable = { colored_cursor = true },
-        contrast = {
-          floating_windows = true,
-          sidebars = true,
+    opts = {
+      disable = { colored_cursor = true },
+      contrast = {
+        floating_windows = true,
+        lsp_virtual_text = true,
+        sidebars = true,
+      },
+      styles = {
+        comments = {
+          italic = true,
         },
-        styles = {
-          comments = {
-            italic = true,
-          },
-        },
-        plugins = {
-          "dap",
-          "dashboard",
-          "eyeliner",
-          "fidget",
-          "flash",
-          "gitsigns",
-          "harpoon",
-          "hop",
-          "illuminate",
-          "indent-blankline",
-          "lspsaga",
-          "neo-tree",
-          "neogit",
-          "neorg",
-          "neotest",
-          "noice",
-          "nvim-cmp",
-          "nvim-navic",
-          "nvim-notify",
-          "nvim-tree",
-          "nvim-web-devicons",
-          "rainbow-delimiters",
-          "sneak",
-          "telescope",
-          "trouble",
-          "which-key",
+      },
+      plugins = {
+        "dap",
+        "dashboard",
+        "eyeliner",
+        "fidget",
+        "flash",
+        "gitsigns",
+        "harpoon",
+        "hop",
+        "illuminate",
+        "indent-blankline",
+        "lspsaga",
+        "neo-tree",
+        "neogit",
+        "neorg",
+        "neotest",
+        "noice",
+        "nvim-cmp",
+        "nvim-navic",
+        "nvim-notify",
+        "nvim-tree",
+        "nvim-web-devicons",
+        "rainbow-delimiters",
+        "sneak",
+        "telescope",
+        "trouble",
+        "which-key",
 
-          -- "mini",  -- Breaks mini.indentscope highlighting...
-        },
-        -- stylua: ignore
-        custom_highlights = {
-          DiagnosticVirtualTextHint  = make_highlight(colors.lsp.hint),
-          DiagnosticVirtualTextInfo  = make_highlight(colors.lsp.info),
-          DiagnosticVirtualTextWarn  = make_highlight(colors.lsp.warning),
-          DiagnosticVirtualTextError = make_highlight(colors.lsp.error),
-        },
-      }
-    end,
+        -- "mini",  -- Breaks mini.indentscope highlighting...
+      },
+    },
   },
 
   -- Nightfox
