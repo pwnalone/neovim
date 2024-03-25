@@ -76,6 +76,14 @@ return {
     },
   },
 
+  -- Peek the buffer when entering command `:{number}`.
+  {
+    "nacro90/numb.nvim",
+    version = false,
+    event = "VeryLazy",
+    opts = {},
+  },
+
   -- Smart switching/resizing of splits with builtin Tmux integration.
   {
     "mrjones2014/smart-splits.nvim",
