@@ -138,6 +138,38 @@ return {
     end,
   },
 
+  -- Add Telescope extension to display and search Neovim's undo tree.
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      {
+        "debugloop/telescope-undo.nvim",
+        config = function()
+          require("lazyvim.util").on_load("telescope", function()
+            require("telescope").load_extension("undo")
+          end)
+        end,
+      },
+    },
+    keys = {
+      { "<leader>su", "<Cmd>Telescope undo<CR>", desc = "Undo tree" },
+      { "<leader>sU", "<Cmd>Telescope undo saved_only=true<CR>", desc = "Undo tree (saved only)" },
+    },
+    opts = function(_, opts)
+      local actions = require("telescope-undo.actions")
+      opts.extensions = opts.extensions or {}
+      opts.extensions.undo = {
+        mappings = {
+          i = {
+            ["<C-x>"] = actions.yank_deletions,
+            ["<C-y>"] = false,
+          },
+        },
+      }
+      return opts
+    end,
+  },
+
   -- Toggle terminals.
   {
     "akinsho/toggleterm.nvim",
