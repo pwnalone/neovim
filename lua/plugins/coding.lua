@@ -4,19 +4,22 @@ return {
     "nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
-      local luasnip = require("luasnip")
 
       local next_placeholder_or_fallback = function(fallback)
-        if luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif vim.snippet.active({ direction = 1 }) then
+          vim.snippet.jump(1)
         else
           fallback()
         end
       end
 
       local prev_placeholder_or_fallback = function(fallback)
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif vim.snippet.active({ direction = -1 }) then
+          vim.snippet.jump(-1)
         else
           fallback()
         end
